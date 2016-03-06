@@ -1,19 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<script type="text/javascript" src="http://static.edu.51cto.com/js/jquery.min.js"></script>
+<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
 
-<script>
+<script src="User.js" type="application/javascript"></script>
 
-    $(function(){
-
-         alert(1);
-    })
-</script>
+<link rel="stylesheet" href="User.css">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div id="box">
+    id:<input type="text" id="txtId">
+    name:<input type="text" id="txtName">
+    dep:<input type="text" id="txtDep">
+    <input type="button" id="btnSub" value="sub">
 
+    <input type="button" id="btnDel" value="del">
+    <input type="button" id="btnAni" value="ani">
+    <input type="button" id="btnSli" value="sli">
+    <input type="button" class="animate" value="animate">
+</div>
+<table style="position: absolute">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>姓名</th>
+        <th>部门</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>001</td>
+        <td>飞电</td>
+        <td>发个</td>
+    </tr>
+    <tr>
+        <td>002</td>
+        <td>多大</td>
+        <td>离开</td>
+    </tr>
+    <tr>
+        <td>001</td>
+        <td>飞电</td>
+        <td>发个</td>
+    </tr>
+    <tr>
+        <td>002</td>
+        <td>多大</td>
+        <td>离开</td>
+    </tr>
+    <tr>
+        <td>001</td>
+        <td>飞电</td>
+        <td>发个</td>
+    </tr>
+    <tr>
+        <td>002</td>
+        <td>多大</td>
+        <td>离开</td>
+    </tr>
+    </tbody>
+</table>
+<a href="#" id="aT"> 跳转</a>
 </body>
 </html>
