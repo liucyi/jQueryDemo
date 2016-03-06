@@ -13,6 +13,15 @@ $(function () {
             $(this).css("background", "")
         }
     })
+
+    $("#btnSub").bind("click", function () {
+        var id = $("#txtId").val();
+        var name = $("#txtName").val();
+        var dep = $("#txtDep").val();
+        //   $("tbody").append("<tr><td>003</td><td>多大</td><td>离开</td></tr>")
+        $("tbody").before('<tr><td>id</td><td>name</td><td>dep</td></tr>');
+
+    })
     /*  $("table tbody tr").hover(function(){
      $(this).css("background","red");
      },(function(){
@@ -89,13 +98,5 @@ $(function () {
      */
 
 
-    $("#btnSub").bind("click", function () {
-        var id = $("#txtId").val();
-        var name = $("#txtName").val();
-        var dep = $("#txtDep").val();
-        //   $("tbody").append("<tr><td>003</td><td>多大</td><td>离开</td></tr>")
-        $("tbody").before('<tr><td>id</td><td>name</td><td>dep</td></tr>');
-
-    })
 
 })
