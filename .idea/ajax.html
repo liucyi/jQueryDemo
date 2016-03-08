@@ -1,17 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
-<script type="text/javascript" src="jquery-1.12.1.min.js"></script>
-
-<script src="ajax.js" type="application/javascript"></script>
-
-<link rel="stylesheet" href="User.css">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product App</title>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/Custome/jquery.nav.js"></script>
+    <style>
+        .list {
+            list-style:none;
+            margin:0;
+            padding:0;
+            font-size:13px;
+            color:#fff;
+            width:500px;
+            margin:50px auto;
+            
+
+        }
+         .list li{
+            float:left;
+            width:100px;height:30px;
+             background:#000000;
+             text-align:center;
+             line-height:30px;
+             cursor:pointer;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            // $.nav();//全局
+            $(".list").eq(1).nav();//局部
+            //$(".nav").css({
+            //    "list-style": "none",
+            //    "margin": 0,
+            //    "padding": 0,
+            //    "display":"none"
+
+            //});
+            //$(".nav").parent().hover(function () {
+            //    $(this).find(".nav").slideDown("slow");
+            //}, function () {
+            //    $(this).find(".nav").stop().slideUp("slow");
+            //})
+        })
+    </script>
 </head>
 <body>
-<div id="box">
-    <input type="button" class="size" value="ajax加載">
-</div>
+    <form>
+        <div>
+            <h2>所有产品</h2>
+            <ul id="products" />
+        </div>
+        <div>
+            <h2>通过ID搜索</h2>
+            <input type="text" id="prodId" name="id" size="5" />
+            <input type="button" value="Search" onclick="find();" />
+            <input type="button" value="GetJson_Ajax" onclick="find_Ajax();" />
+            <p id="product" />
+
+            <span id="loding" style="display:none">加载中。。。。。。。</span>
+        </div>
+    </form>
+
+    <div>
+        <ul class="list">
+            <li>导航列表
+                <ul class="nav">
+                    <li>列表1</li>
+                    <li>列表1</li>
+                    <li>列表1</li>
+                    <li>列表1</li>
+                    <li>列表1</li>
+                </ul>
+            </li>
+            <li>导航列表
+                <ul class="nav">
+                    <li>列表2</li>
+                    <li>列表2</li>
+                    <li>列表2</li>
+                    <li>列表2</li>
+                    <li>列表2</li>
+                </ul>
+            </li>
+            <li>导航列表
+                <ul class="nav">
+                    <li>列表3</li>
+                    <li>列表3</li>
+                    <li>列表3</li>
+                    <li>列表3</li>
+                    <li>列表3</li>
+                </ul>
+            </li>
+            <li>导航列表
+                <ul class="nav">
+                    <li>列表4</li>
+                    <li>列表4</li>
+                    <li>列表4</li>
+                    <li>列表4</li>
+                    <li>列表4</li>
+                </ul>
+            </li>
+            <li>导航列表
+                <ul class="nav">
+                    <li>列表5</li>
+                    <li>列表5</li>
+                    <li>列表5</li>
+                    <li>列表5</li>
+                    <li>列表5</li>
+                </ul>
+            </li>
+
+        </ul>
+
+        
+    </div>
+    <div style="margin-top:100px">
+        <ul class="list">
+            <li>
+                导航列表
+                <ul class="nav">
+                    <li>列表1</li>
+                    <li>列表1</li>
+                    <li>列表1</li>
+                    <li>列表1</li>
+                    <li>列表1</li>
+                </ul>
+            </li>
+            <li>
+                导航列表
+                <ul class="nav">
+                    <li>列表2</li>
+                    <li>列表2</li>
+                    <li>列表2</li>
+                    <li>列表2</li>
+                    <li>列表2</li>
+                </ul>
+            </li>
+            <li>
+                导航列表
+                <ul class="nav">
+                    <li>列表3</li>
+                    <li>列表3</li>
+                    <li>列表3</li>
+                    <li>列表3</li>
+                    <li>列表3</li>
+                </ul>
+            </li>
+            <li>
+                导航列表
+                <ul class="nav">
+                    <li>列表4</li>
+                    <li>列表4</li>
+                    <li>列表4</li>
+                    <li>列表4</li>
+                    <li>列表4</li>
+                </ul>
+            </li>
+            <li>
+                导航列表
+                <ul class="nav">
+                    <li>列表5</li>
+                    <li>列表5</li>
+                    <li>列表5</li>
+                    <li>列表5</li>
+                    <li>列表5</li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+    <script>
+
+        var uri = '/api/products';
+
+        $(document)
+            .ajaxStart(function () {
+                $("#loding").show(1000);
+            })
+            .ajaxStop(function () {
+                $("#loding").hide(1000);
+            })
+
+            .ready(function () {
+                // 发送AJAX请求
+                $.getJSON(uri)
+                    .done(function (data) {
+                        // 如果成功，‘data’包含产品列表。
+                        $.each(data, function (key, item) {
+                            // 将列表添加到product节点。
+                            $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+                            //$("#products").append("<li>"+item.Name + ': ￥' + item.Price+"</li>")
+                        });
+                    });
+            });
+
+        function formatItem(item) {
+            return item.Name + ': ￥' + item.Price;
+        }
+
+        function find() {
+
+            var id = $('#prodId').val();
+            $.getJSON(uri + '/' + id)
+                .done(function (data) {
+                    $('#product').text(formatItem(data));
+                })
+                .fail(function (jqXHR, textStatus, err) {
+                    $('#product').text('错误: ' + err);
+                });
+        }
+        function find_Ajax() {
+            //var data = $("form").serialize();
+            //alert(data);
+            //var id = $('#prodId').val();
+            //$.post("http://wwwwwww.cccc.com",//"/Home/GetJson",
+            //    data,
+            //    function (data, s, x) {
+            //        alert(data.Name);
+            //    })
+            var jqXHR = $.ajax({
+                type: "POST",
+                url: "/Home/GetJson",
+                data: $("form").serialize()
+            })
+            jqXHR.done(function (data) {
+                alert(data.Name);
+            })
+        }
+    </script>
 </body>
 </html>
