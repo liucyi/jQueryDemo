@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <style>
+        .content {
+            width: 628px;
+            border-bottom: solid 1px #999;
+          
+        }
+
+
+        .content_top {
+            color: #999;
+            font-size: 13px;
+        }
+
+        .content_title h2 {
+            font-size: 18px;
+        }
+
+        .content_text {
+            font-size: 13px;
+            line-height: 180%;
+            overflow: hidden;
+        }
+
+        .content_bottom {
+            font-size: 13px;
+            color: blue;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/PostContent",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    var arr = [];
+                    var summary = [];
+                    $.each(data, function (index, value) {
+
+                        html += "<div class='content'><div class='content_top'>热门回答，来自" + value.User + "</div><div class='content_title'> <h2>" + value.Title + "</h2></div><div class='content_text'>" + value.Text + "</div> <div class='content_bottom'><div class='content_up'>收起</div><div class='content_down'>显示全部</div></div></div>";
+                    })
+
+                    $(".test").append(html);
+                    $.each($(".content_text"), function (index, value) {
+                        /*获取文本的高度
+                        arr[index] = $(value).height();
+                        //alert(arr[index]);
+                 
+                        //if ($(value).height() > 155) {
+                        //    $(value).next().find(".content_up").hide();
+                        //    $(value).height(155);
+                        //} else {
+                        //    $(value).next().find(".content_up").hide();
+                        //    $(value).next().find(".content_down").hide();
+                        }*/
+                        arr[index] = $(value).html();
+                        summary[index] = arr[index].substr(0, 200);
+                        if (arr[index].length>200) {
+                            $(value).html(summary[index]);
+                        }
+                    })
+                    $.each($(".content_down"), function (index, value) {
+                        $(this).click(function () {
+                            $(this).parent().prev().height(arr[index]);
+                            $(this).hide();
+                            $(this).parent().find(".content_up").show();
+                        })
+                    })
+                    $.each($(".content_up"), function (index, value) {
+                        $(this).click(function () {
+
+
+                            $(this).parent().prev().height(155);
+                            $(this).hide();
+                            $(this).parent().find(".content_down").show();
+
+                        })
+                    })
+                }
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div class="test">
+      
+    </div>
+</body>
+</html>
