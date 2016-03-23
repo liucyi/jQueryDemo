@@ -11,6 +11,7 @@ import java.util.List;
 
 public class StudentDao {
 	public List<Student> getAll() {
+
 		List<Student> students = new ArrayList<Student>();
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -30,12 +31,11 @@ public class StudentDao {
 				int id = resultSet.getInt(1);
 				String userName = resultSet.getString(2);
 				String passWord = resultSet.getString(3);
-			 	Date createTime = sdf.parse(resultSet.getString(4));
+				Date createTime = sdf.parse(resultSet.getString(4));
 				int status = resultSet.getInt(6);
 				Student student = new Student(id, userName, passWord,
-					 createTime, 
-						status);
-   
+						createTime, status);
+
 				students.add(student);
 			}
 		} catch (Exception e) {
@@ -70,5 +70,48 @@ public class StudentDao {
 		}
 
 		return students;
+	}
+
+	public void deleteById(Integer id) {
+
+		List<Student> students = new ArrayList<Student>();
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String driverString = "com.mysql.jdbc.Driver";
+			String url = "jdbc:mysql://127.0.0.1:3306/uracsdb";
+			String user = "root";
+			String password = "123456";
+			Class.forName(driverString);
+			connection = DriverManager.getConnection(url, user, password);
+			String sqlString = "delete   from t_app_user where id=?";
+			preparedStatement = connection.prepareStatement(sqlString);
+
+			preparedStatement.setInt(1, id);
+			preparedStatement.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (preparedStatement != null) {
+					preparedStatement.close();
+				}
+
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+
+		}
 	}
 }
