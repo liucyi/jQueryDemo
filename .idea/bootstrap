@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+
     <title>Title</title>
 
 <style>
@@ -15,13 +18,46 @@
     .carousel-inner img{
         margin: 0 auto;
     }
+    .carousel-control {
+        font-size: 100px;
+        line-height: 400px;
+    }
+    .tab1-h2{
+        font-size: 30px;
+        text-align: center;
+        letter-spacing: 1px;
+        color: #2aabd2;
+    } .tab1-p{
+          font-size: 18px;
+          text-align: center;
+          letter-spacing: 1px;
+              color: #0f0f0f;
+      }
+    .tab1{
+       margin:30px;
+        color: #666;
+    }
 </style>
     <link rel="stylesheet" href="bootstrap.css">
 
     <script src="jquery-1.12.1.min.js" type="application/javascript" ></script>
 
     <script src="bootstrap.js" type="application/javascript" ></script>
+ <script>
+     $(function(){
+         $("#myCarousel").carousel({
+             interval:2000,
+         })
 
+  $(".carousel-control").css("line", $(".carousel-inner img").height()+"px");
+  window.resize( function(){
+      $(".carousel-control").css("line", $(".carousel-inner img").height()+"px");
+  })
+
+     })
+
+
+ </script>
 
 </head>
 <body>
@@ -44,21 +80,75 @@
         </div>
 
     </div>
-
 </nav>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" de-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner " role="listbox">
-        <div class="item active"><img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" alt="第一张" width="400px"></div>
-        <div class="item"><img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247244_171988.jpg" alt="第二张" width="400px"></div>
-        <div class="item"><img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247245_326499.jpg" alt="第三张" width="400px"></div>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active"><img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" alt="第一张"  width="400px"    ></div>
+        <div class="item"><img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247244_171988.jpg" alt="第二张"   width="400px"  ></div>
+        <div class="item"><img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247245_326499.jpg" alt="第三张" width="400px"   ></div>
     </div>
-    <a href=""></a>
-    <a href=""></a>
+    <a href="#myCarousel" data-slide="prev" class="carousel-control left">&lsaquo;</a>
+    <a href="#myCarousel" data-slide="next" class="carousel-control right">&rsaquo;</a>
+</div>
+<div class="tab1">
+    <div class="container">
+        <h2 class="tab1-h2">
+           培训企业
+        </h2><p class="tab1-p">强大的力量</p>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" alt="第一张"  width="100px"    >
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">课程内容</h4>
+                    <p>其他的东西</p>
+                    <p>是很强大</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" alt="第一张"  width="100px"    >
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">课程内容</h4>
+                    <p>其他的东西</p>
+                    <p>是很强大</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" alt="第一张"  width="100px"    >
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">课程内容</h4>
+                    <p>其他的东西</p>
+                    <p>是很强大</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="media">
+                <div class="media-left">
+                    <img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" alt="第一张"  width="100px"    >
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">课程内容</h4>
+                    <p>其他的东西</p>
+                    <p>是很强大</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
  </body>
 </html>
