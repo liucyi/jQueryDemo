@@ -37,6 +37,33 @@
        margin:30px;
         color: #666;
     }
+    .tab1 .text-muted{
+        text-decoration: line-through;
+        color: #999;
+    }
+    .tab1 .col{
+        padding: 20px;
+    }
+    .tab1 .media-heading{
+      margin: 5px 0 20px 0;
+    }
+    .tab2{
+        background-color: #eee;
+    }
+    .tab2 img{
+        width: 40%;
+        height: 40%;
+    }
+    .tab3 img{
+        width: 60%;
+        height: 60%;
+    }
+    #footer{
+        text-align: center;
+        background-color: #eee;
+        border-top: 1px solid #ccc;
+        padding: 20px;
+    }
 </style>
     <link rel="stylesheet" href="bootstrap.css">
 
@@ -150,5 +177,41 @@
         </div>
     </div>
 </div>
+<div class="tab2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3>
+强大的学习体系
+                </h3>
+                <p>经过管理学大事层层把关，让你的企业如非梦境</p>
+            </div>
+            <div class="col-md-6">
+                <img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247246_359191.jpg" height="350px"  alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tab3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="http://www.sinaimg.cn/dy/slidenews/11_img/2016_13/611_247248_802373.jpg" height="350px"  alt="">
+            </div>
+            <div class="col-md-6">
+                <h3>
+                    强大的学习体系
+                </h3>
+                <p>经过管理学大事层层把关，让你的企业如非梦境</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        <p>企业培训 | 合作事宜 | 版权投诉</p>
+        <p>苏IPC 备的路口附近来得快@  dlkjl。com</p>
+    </div>
+</footer>
  </body>
 </html>
